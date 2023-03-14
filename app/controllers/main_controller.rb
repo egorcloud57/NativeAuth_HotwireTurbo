@@ -5,13 +5,13 @@ class MainController < ApplicationController
 
   private
 
-  def sender(model)
+  def assign_sender_to_model(model)
     params[model][:user_id] = current_user.id
   end
 
   def logged_in_user
     unless logged_in?
-      # store_location
+      store_location
       flash[:danger] = "Пожалуйста, войдите."
       redirect_to new_session_path
     end

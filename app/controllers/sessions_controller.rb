@@ -7,7 +7,7 @@ class SessionsController < MainController
       if user.activated?
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        # redirect_back_or user
+        redirect_back_or user
         flash[:success] = "Добро пожаловать!"
       else
         flash.now[:warning] = "Учетная запись не активирована. Проверьте свою электронную почту на наличие ссылки для активации"

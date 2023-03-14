@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :reset_token, :remember_token, :activation_token # виртуальные атрибуты
-  has_many :notes
+  has_many :notes, dependent: :destroy
 
   before_create :create_activation_digest
   before_save { self.email = email.downcase }

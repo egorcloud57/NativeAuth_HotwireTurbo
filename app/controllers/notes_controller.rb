@@ -1,7 +1,7 @@
 class NotesController < MainController
   before_action :find_note!, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
-  before_action -> { sender(:note) }, only: [:create, :update]
+  before_action -> { assign_sender_to_model(:note) }, only: [:create, :update]
 
   def index
     @notes = current_user.notes.order(created_at: :desc)

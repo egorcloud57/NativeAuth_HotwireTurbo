@@ -3,9 +3,7 @@ class PasswordResetsController < MainController
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
 
-  def new
-
-  end
+  def new; end
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
@@ -23,11 +21,10 @@ class PasswordResetsController < MainController
   def update
     if password_blank?
       flash.now[:danger] = "Пароль не может быть пустым"
-      render 'edit'
     elsif @user.update(user_params)
       log_in @user
+      redirect_back_or @user
       flash[:success] = "Пароль был сброшен."
-      redirect_to @user
     else
       render 'edit'
     end
@@ -53,7 +50,7 @@ class PasswordResetsController < MainController
 
   def check_expiration
     if @user.password_reset_expired?
-      flash.now[:danger] = "Срок действия сброса пароля истек."
+      flash[:danger] = "Срок действия сброса пароля истек."
       redirect_to new_password_reset_url
     end
   end

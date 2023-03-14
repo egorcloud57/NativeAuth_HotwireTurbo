@@ -1,0 +1,3 @@
+= render_turbo_stream_flash_messages
+- if logged_in?
+  = turbo_stream.replace "navbar_menu", partial: "layouts/sub_header"

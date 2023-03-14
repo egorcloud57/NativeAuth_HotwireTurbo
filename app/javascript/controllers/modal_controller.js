@@ -14,6 +14,7 @@ export default class extends Controller {
   close(event) {
     if (event.detail.success) {
       this.modal.hide()
+      // Turbo.visit('/notes')
     }
   }
 }
