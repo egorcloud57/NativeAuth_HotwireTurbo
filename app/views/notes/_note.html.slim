@@ -1,0 +1,6 @@
+= turbo_frame_tag note
+  .mb-3
+    h2= link_to note.title, note_path(note), data: { turbo_frame: '_top' }
+    p= note.description
+    = link_to 'edit', edit_note_path(note), class: 'btn btn-rosy'
+    = link_to 'delete', note_path(note), class: 'btn btn-dark', data: { turbo_method: :delete, turbo_confirm: 'вы увереннны?' }

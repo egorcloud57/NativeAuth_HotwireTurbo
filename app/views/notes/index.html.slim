@@ -1,0 +1,4 @@
+h1 index
+= link_to 'create note', new_note_path, class: 'btn btn-rosy', data: { turbo_frame: dom_id(Note.new) }
+= turbo_frame_tag Note.new
+= render @notes

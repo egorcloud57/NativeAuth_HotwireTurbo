@@ -1,0 +1,6 @@
+= form_with scope: :password_reset, url: password_resets_path do |f|
+  .row.mb-3
+    = f.label :email, { class: "col-md-2 col-form-label" }
+    .col-md-10
+      = f.email_field :email, { class: "form-control", placeholder: "Enter email" }
+  = f.submit "Submit", class: "btn btn-rosy"

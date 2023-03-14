@@ -1,0 +1,20 @@
+nav.navbar.navbar-dark.bg-dark.navbar-expand-md
+  .container-fluid
+    .navbar-brand
+      span On Memory
+      span.navbar_logo W
+    button.navbar-toggler[type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации"]
+      span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse.justify-content-end.pe-5.me-2
+      ul.navbar-nav
+        = nav_link("Главная", root_path, "nav-link bi bi-house")
+        = nav_link("Заметки", notes_path, "nav-link bi bi-pencil") if logged_in?
+        li.nav-item.dropdown
+          a#navbarDropdownMenuLink.nav-link.dropdown-toggle.bi.bi-person[href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"]
+            | Аккаунт
+          ul.dropdown-menu[aria-labelledby="navbarDropdownMenuLink"]
+            - unless logged_in?
+              = nav_link("Вход", new_session_path, "dropdown-item") { { turbo_frame: 'modal' } }
+              = nav_link("Регистрация", new_user_path, "dropdown-item") { { turbo_frame: 'modal' } }
+            - else
+              = nav_link("Выход", logout_path, "dropdown-item") { { method: :delete, confirm: 'вы увереннны?' } }

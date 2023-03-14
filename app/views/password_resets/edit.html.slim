@@ -1,0 +1,15 @@
+h1 Reset password
+= form_with model: @user, url: password_reset_path(params[:id]), data: { turbo: false } do |f|
+  = render 'shared/errors', object: @user
+
+  = hidden_field_tag :email, @user.email
+
+  .row.mb-3
+    = f.label :password, { class: "col-md-2 col-form-label" }
+    .col-md-10
+      = f.password_field :password, { class: "form-control", placeholder: "Enter password" }
+  .row.mb-3
+    = f.label :password_confirmation, { class: "col-md-2 col-form-label" }
+    .col-md-10
+      = f.password_field :password_confirmation, { class: "form-control", placeholder: "Enter password confirmation" }
+  = f.submit "Update password", class: "btn btn-rosy"

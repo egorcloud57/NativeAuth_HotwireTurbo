@@ -1,0 +1,6 @@
+= turbo_frame_tag "modal"
+  .modal-header
+    h4.modal-title Registration
+    / button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]
+  .modal-body
+    = render "form", user: @user

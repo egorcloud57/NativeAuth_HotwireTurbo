@@ -1,0 +1,4 @@
+.modal[tabindex="-1" data-controller="modal" data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close"]
+  .modal-dialog.modal-lg
+    .modal-content
+      = turbo_frame_tag 'modal'

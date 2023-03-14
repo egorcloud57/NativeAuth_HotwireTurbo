@@ -1,0 +1,1 @@
+require_relative "#{Rails.root}/lib/test"
